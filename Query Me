@@ -1,0 +1,5 @@
+SELECT e.empid,e.empname as emp_name,m.ManagerName as mgr_Name,m.ManagerId
+From Employees e 
+LEFT OUTER JOIN EMPLOYEES m 
+ON (e.employee_id=m.managerid)
+order by e.empName , m.ManagerName
