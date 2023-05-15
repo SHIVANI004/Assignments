@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validate Form</title>
+    
+</head>
+<body>
+    <script>
+     function validateForm()
+      {
+        var username=document.getElementById("username").value;
+        var pin =document.getElementById("pin").value;
+        var states= document.getElementById("states").value;
+        var validatePin=document.getElementById("validatePin").value;
+        var testMe=document.getElementById("testMe").value;
+   
+        var message=[];
+
+        if(username.length<6 ||username.length>8)
+            {
+                alert("username should be between 6-8 characters");
+
+                message.push("username should be between 6-8 characters");
+            }
+        if(validatePin && pin.length===0)
+        {
+            alert("Please enter the pin")
+
+            message.push("Please enter the pin")
+        }
+        if(states==="")
+        {
+            alert("Please Select The State")
+
+            message.push("Please Select The State")
+        }
+       var validationMessage="validation Messages: <br>";
+       if(message.length===0){
+        validationMessage+="All Are Correct";
+       }
+        else{
+            for(var i=0;i<message.length;i++)
+            {
+                validationMessage+="==> "+ message[i]+"<br>";
+            }
+        }
+        
+        validationMessage+="<br> Test Me : ";
+        if(testMe){
+            validationMessage+="Checked";
+        }else{
+            validationMessage+="Unchecked";
+        }
+
+        document.getElementById("validationMessage").innerHTML=validationMessage
+       
+      }
+    </script>
+     <h3>Validate Me!!</h3>
+     <div>
+        <form>
+            
+           <p> Username(6-8 Characters) <input type="text" id="username" placeholder="Username" ></p>
+           <p> pin<input type="number" id="pin" placeholder="pin"></p>
+            <datalist id="data">
+                <option>Jammu and Kashmir</option>
+                <option>Punjab</option>
+                <option>Haryana</option>
+                <option>Uttrakhand</option>
+                <option>Uttar Pardesh</option>
+                <option>Goa</option>
+                <option>Maharashtra</option>
+                <option>madhya Pradesh</option>
+                <option>Bihar</option>
+                <option>Chennai</option>
+                <option>Tamil Naidu</option>
+                <option>Himachal Pardesh</option>
+                <option>Nagaland</option>
+                <option>Assam</option>
+                <option>Kerela</option>
+    
+             </datalist>
+            <p>State<input type="text" id="states" list="data" placeholder="Select your State">
+                <br>
+                <br>
+                <label >Validate Pin</label>
+                <input type="checkbox" id="validatePin"><br><br>
+
+                <label >Test Me</label>
+                <input type="checkbox" id="testMe"><br><br>
+                </p>
+                <p>
+                    <input type="radio">Milk<br>
+                    <input type="radio">Butter<br>
+                    <input type="radio">Cheese<br>
+                   </p>
+             <button type="button" onClick="validateForm()">Check Form</button>
+        </form>
+     </div>
+     <div id="validationMessage"></div>
+</body>
+</html>
